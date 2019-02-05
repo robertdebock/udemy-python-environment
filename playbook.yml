@@ -1,0 +1,34 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  become: true
+
+  vars:
+    users_group_list:
+      - name: robertdb
+    users_user_list:
+      - name: robertdb
+        comment: Robert de Bock
+        group: robertdb
+        cron_allow: yes
+        sudo_options: "ALL=(ALL) NOPASSWD: ALL"
+        authorized_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWswOogkZz/ihQA0lENCwDwSzmtmBWtFwzIzDlfa+eb4rBt6rZBg7enKeMqYtStI/NDneBwZUFBDIMu5zJTbvg7A60/WDhWXZmU21tZnm8K7KREFYOUndc6h//QHig6IIaIwwBZHF1NgXLtZ0qrUUlNU5JSEhDJsObMlPHtE4vFP8twPnfc7hxAnYma5+knU6qTMCDvhBE5tGJdor4UGeAhu+SwSVDloYtt1vGTmnFn8M/OD/fRMksusPefxyshJ37jpB4jY/Z9vzaNHwcj33prwl1b/xRfxr/+KRJsyq+ZKs9u2TVw9g4p+XLdfDtzZ8thR2P3x3MFrZOdFmCbo/5"
+    git_username: root
+    git_groupname: root
+    git_repository_destination: /root
+    git_repositories:
+      - repo: https://github.com/Pierian-Data/Complete-Python-3-Bootcamp
+        dest: workbooks
+        force: yes
+
+  roles:
+    - role: robertdebock.bootstrap
+    - role: robertdebock.update
+    - role: robertdebock.git
+    - role: robertdebock.users
+    - role: robertdebock.buildtools
+    - role: robertdebock.epel
+    - role: robertdebock.python_pip
+    - role: robertdebock.anaconda

@@ -1,0 +1,10 @@
+---
+- robertdebock.anaconda
+- robertdebock.bootstrap
+- robertdebock.buildtools
+- robertdebock.epel
+- robertdebock.git
+- robertdebock.python_pip
+- robertdebock.reboot
+- robertdebock.update
+- robertdebock.users
