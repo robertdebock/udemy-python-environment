@@ -33,4 +33,4 @@ vagrant ssh
 Or use Jupyter Notebook by visiting the IP address of the virtual machine.
 
 Hint 1: Find the IP of the vm using `vagrant ssh-config`.
-Hint 2: Find the access token using `systemctl status jupyter-notebook` on the virtual machine.
+Hint 2: Find the access token using `systemctl status jupyter-notebook` or `systemctl status anaconda` on the virtual machine.
